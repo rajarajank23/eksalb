@@ -1,0 +1,29 @@
+
+1.ubuntu@ip-172-31-91-130:~$ helm repo add eks https://aws.github.io/eks-charts
+Command 'helm' not found, but can be installed with:
+sudo snap install helm
+ubuntu@ip-172-31-91-130:~$ sudo snap install helm
+error: This revision of snap "helm" was published using classic confinement and thus may perform
+       arbitrary system changes outside of the security sandbox that snaps are usually confined to,
+       which may put your system at risk.
+
+       If you understand and want to proceed repeat the command including --classic.
+2.ubuntu@ip-172-31-91-130:~$ sudo snap install helm --classic
+helm 3.17.2 from Snapcrafters✪ installed
+3.ubuntu@ip-172-31-91-130:~$ helm repo add eks https://aws.github.io/eks-charts
+"eks" has been added to your repositories
+ubuntu@ip-172-31-91-130:~$ helm repo update eks
+Hang tight while we grab the latest from your chart repositories...
+...Successfully got an update from the "eks" chart repository
+Update Complete. ⎈Happy Helming!⎈
+
+
+kubectl get pods -n kube-system
+
+kubectl get ingressclass/ingres-class
+
+kubectl get deployment
+
+kubectl describe ingress/alb-ingress-rules
+
+https://harsh05.medium.com/path-based-routing-with-aws-load-balancer-controller-an-ingress-journey-on-amazon-eks-733d3c6c5adf
