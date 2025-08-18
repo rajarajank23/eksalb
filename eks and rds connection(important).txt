@@ -1,0 +1,57 @@
+important configuration
+aws eks describe-cluster --name amcdemo --query "cluster.resourcesVpcConfig.subnetIds" --output text
+
+aws eks describe-cluster --name amcdemo --query "cluster.resourcesVpcConfig.vpcId" --output text
+
+
+aws rds create-db-subnet-group \
+  --db-subnet-group-name wp-db-subnet \
+  --db-subnet-group-description "Subnet group for WordPress DB" \
+  --subnet-ids subnet-05b13d6f03b005d7e subnet-065992851188511bd
+
+
+aws rds create-db-instance \
+  --db-instance-identifier wp-db \
+  --db-instance-class db.t3.micro \
+  --engine mysql \
+  --master-username admin \
+  --master-user-password 1ctS77M8aKP0 \
+  --allocated-storage 20 \
+  --vpc-security-group-ids sg-<ClusterSharedNodeSG> \
+  --db-subnet-group-name wp-db-subnet
+
+
+aws rds create-db-instance \
+  --db-instance-identifier wp-db \
+  --db-instance-class db.t3.micro \
+  --engine mysql \
+  --master-username admin \
+  --master-user-password 1ctS77M8aKP0 \
+  --allocated-storage 20 \
+  --vpc-security-group-ids sg-0d0f7cac0e7958524 \
+  --db-subnet-group-name rds-db-subnet
+
+
+kubectl create secret generic rds-secret \
+  -n lamp-app \
+  --from-literal=username=admin \
+  --from-literal=password=1ctS77M8aKP0
+
+
+
+eks-cluster-sg-amcdemo-891370470
+
+eksctl-amcdemo-cluster/ClusterSharedNodeSecurityGroup
+eksctl-amcdemo-nodegroup-amcdemo-ng-public1/SSH
+
+eksctl-amcdemo-cluster/ControlPlaneSecurityGroup
+
+aws rds create-db-instance \
+  --db-instance-identifier wp-db \
+  --db-instance-class db.t3.micro \
+  --engine mysql \
+  --master-username admin \
+  --master-user-password 1ctS77M8aKP0 \
+  --allocated-storage 20 \
+  --vpc-security-group-ids sg-04e73164d964232d7 \
+  --db-subnet-group-name wp-db-subnet
