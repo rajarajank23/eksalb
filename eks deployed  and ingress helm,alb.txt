@@ -93,3 +93,23 @@ eksctl create iamserviceaccount \
   --name=aws-load-balancer-controller \
   --attach-policy-arn=arn:aws:iam::<AWS_ACCOUNT_ID>:policy/AWSLoadBalancerControllerIAMPolicy \
   --approve
+
+eksctl create nodegroup \
+  --cluster=amcdemo \
+  --region=us-east-1 \
+  --name=amcdemo-ng-ubuntu \
+  --node-type=t3.medium \
+  --nodes=2 \
+  --nodes-min=2 \
+  --nodes-max=4 \
+  --node-volume-size=20 \
+  --ssh-access \
+  --ssh-public-key=amc-demo \
+  --managed \
+  --node-ami-family=Ubuntu2204 \
+  --asg-access \
+  --external-dns-access \
+  --full-ecr-access \
+  --appmesh-access \
+  --alb-ingress-access
+
