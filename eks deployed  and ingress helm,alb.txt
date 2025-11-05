@@ -113,3 +113,4 @@ eksctl create nodegroup \
   --appmesh-access \
   --alb-ingress-access
 
+aws account rajarajanaws@hotmail.com passwd: yEibNk3S2=G4
